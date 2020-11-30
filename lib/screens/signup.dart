@@ -2,7 +2,6 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:chatapps/screens/login.dart';
-import 'screens/signup.dart';
 
 void main() {
   runApp(MyApp());
@@ -14,29 +13,26 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      routes: <String, WidgetBuilder> {
-        '/signup': (BuildContext context) => new SignupPage()
-      },
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: SignupPage(title: 'Flutter Demo Home Page'),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+class SignupPage extends StatefulWidget {
+  SignupPage({Key key, this.title}) : super(key: key);
 
   final String title;
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _SignupPageState createState() => _SignupPageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _SignupPageState extends State<SignupPage> {
   int _counter = 0;
 
   void _incrementCounter() {
@@ -54,27 +50,27 @@ class _MyHomePageState extends State<MyHomePage> {
         children: <Widget>[
           Container(
               child: Stack(children: <Widget>[
-            HelloWidget(),
-            FoodyWidget(),
-            DotWidget()
-          ])),
+                HelloWidget(),
+                FoodyWidget(),
+                DotWidget()
+              ])),
           Container(
               padding: EdgeInsets.only(top: 35.0, left: 20.0, right: 20.0),
               child: Column(
                 children: <Widget>[
                   EmailWidget(),
-                  SizedBox(height: 20.0),
                   PasswordWidget(),
-                  SizedBox(height: 20.0),
-                  ForgotPasswordWidget(),
-                  SizedBox(height: 40.0),
-                  LoginButtonWidget(),
-                  SizedBox(height: 20.0),
-                  GoogleLoginWidget()
+                  AddressLine1Widget(),
+                  AddressLine2Widget(),
+                  PostCodeWidget(),
+                  TownWidget(),
+                  SizedBox(height: 10.0),
+                  SignupButtonWidget(),
+                  SizedBox(height: 10.0),
+                  CancelButtonWidget()
                 ],
               )),
           SizedBox(height: 15.0),
-          RegisterWidget()
         ],
       ),
     );
@@ -97,9 +93,7 @@ class RegisterWidget extends StatelessWidget {
         ),
         SizedBox(width: 5.0),
         InkWell(
-            onTap: () {
-              Navigator.of(context).pushNamed('/signup');
-            },
+            onTap: () {},
             child: Text('Register',
                 style: TextStyle(
                     color: Colors.blue,
