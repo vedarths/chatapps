@@ -42,7 +42,30 @@ class _HomePageState extends State<HomePage> {
                         ))
                   ],
                 ),
-              ])
+              ]),
+          SizedBox(height: 5,),
+          Container(
+            decoration: BoxDecoration(
+              color: WHITE,
+              boxShadow: [
+                BoxShadow(
+                  color: GREY[300],
+                  offset: Offset(1,1),
+                  blurRadius: 4
+                )
+              ]
+            ),
+            child: ListTile(
+              leading: Icon(Icons.search, color: BLUE,),
+              title: TextField(
+                decoration: InputDecoration(
+                  hintText: "Find Food",
+                  border: InputBorder.none
+                ),
+              ),
+              trailing: Icon(Icons.filter_list, color: BLUE,),
+            ),
+          )
         ])));
   }
 }
