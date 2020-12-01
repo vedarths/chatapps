@@ -23,7 +23,7 @@ class _HomePageState extends State<HomePage> {
                 Padding(
                   padding: const EdgeInsets.all(18.0),
                   child: CustomText(
-                      text: "What would you like to order?", size: 28),
+                      text: "Today's Menu!", size: 28),
                 ),
                 Stack(
                   children: <Widget>[
@@ -67,12 +67,59 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
               )),
-          SizedBox(
-            height: 5,
+          Categories(),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: CustomText(
+              text: "Featured",
+              size: 20,
+              color: GREY,
+              family: 'Monteserrat',
+            ),
           ),
-           Categories(
-
-           )
+          Container(
+            height: 240,
+            child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: 2,
+                itemBuilder: (_, index) {
+                  return Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Container(
+                      height: 240,
+                      width: 200,
+                      decoration: BoxDecoration(color: WHITE, boxShadow: [
+                        BoxShadow(
+                            color: GREY[300],
+                            offset: Offset(1, 1),
+                            blurRadius: 4)
+                      ]),
+                      child: Column(
+                        children: <Widget>[
+                          Image.asset(
+                            "images/1.jpg",
+                            height: 140,
+                            width: 140,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: CustomText(text: "Some food",),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Icon(Icons.favorite_border, color: RED, size: 18,),
+                              )
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                }),
+          )
         ])));
   }
 }
