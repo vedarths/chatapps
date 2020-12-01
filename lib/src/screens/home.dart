@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:chatapps/src/widgets/categories.dart';
 import 'package:chatapps/src/widgets/title.dart';
 import 'package:flutter/material.dart';
 import 'package:chatapps/src/widgets/commons.dart';
@@ -21,7 +22,8 @@ class _HomePageState extends State<HomePage> {
               children: <Widget>[
                 Padding(
                   padding: const EdgeInsets.all(18.0),
-                  child: CustomText(text: "What would you like to order?", size: 28),
+                  child: CustomText(
+                      text: "What would you like to order?", size: 28),
                 ),
                 Stack(
                   children: <Widget>[
@@ -40,29 +42,37 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
               ]),
-          SizedBox(height: 5,),
-          Container(
-            decoration: BoxDecoration(
-              color: WHITE,
-              boxShadow: [
-                BoxShadow(
-                  color: GREY[300],
-                  offset: Offset(1,1),
-                  blurRadius: 4
-                )
-              ]
-            ),
-            child: ListTile(
-              leading: Icon(Icons.search, color: BLUE,),
-              title: TextField(
-                decoration: InputDecoration(
-                  hintText: "Find Food",
-                  border: InputBorder.none
+          SizedBox(
+            height: 5,
+          ),
+          Padding(
+              padding: const EdgeInsets.all(18.0),
+              child: Container(
+                decoration: BoxDecoration(color: WHITE, boxShadow: [
+                  BoxShadow(
+                      color: GREY[300], offset: Offset(1, 1), blurRadius: 4)
+                ]),
+                child: ListTile(
+                  leading: Icon(
+                    Icons.search,
+                    color: BLUE,
+                  ),
+                  title: TextField(
+                    decoration: InputDecoration(
+                        hintText: "Find Food", border: InputBorder.none),
+                  ),
+                  trailing: Icon(
+                    Icons.filter_list,
+                    color: BLUE,
+                  ),
                 ),
-              ),
-              trailing: Icon(Icons.filter_list, color: BLUE,),
-            ),
-          )
+              )),
+          SizedBox(
+            height: 5,
+          ),
+           Categories(
+
+           )
         ])));
   }
 }
