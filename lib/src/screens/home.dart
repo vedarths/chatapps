@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:chatapps/src/widgets/categories.dart';
+import 'package:chatapps/src/widgets/featured_products.dart';
 import 'package:chatapps/src/widgets/title.dart';
 import 'package:flutter/material.dart';
 import 'package:chatapps/src/widgets/commons.dart';
@@ -23,7 +24,7 @@ class _HomePageState extends State<HomePage> {
                 Padding(
                   padding: const EdgeInsets.all(18.0),
                   child: CustomText(
-                      text: "Today's Menu!", size: 28),
+                      text: "Watcha want?", size: 28),
                 ),
                 Stack(
                   children: <Widget>[
@@ -77,90 +78,7 @@ class _HomePageState extends State<HomePage> {
               family: 'Monteserrat',
             ),
           ),
-
-          Container(
-            height: 240,
-            child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: 2,
-                itemBuilder: (_, index) {
-                  return Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Container(
-                      height: 240,
-                      width: 200,
-                      decoration: BoxDecoration(color: WHITE, boxShadow: [
-                        BoxShadow(
-                            color: GREY[300],
-                            offset: Offset(1, 1),
-                            blurRadius: 4)
-                      ]),
-                      child: Column(
-                        children: <Widget>[
-                          Image.asset(
-                            "images/1.jpg",
-                            height: 140,
-                            width: 140,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: <Widget>[
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: CustomText(text: "Some food",),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(20),
-                                    color: WHITE,
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: GREY[300],
-                                        offset: Offset(1, 1),
-                                        blurRadius: 4
-                                      )
-                                    ]
-
-                                  )),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(4.0),
-                                child: Icon(Icons.favorite_border, color: RED, size: 18,),
-                              )
-                            ],
-                          ),
-                          SizedBox(height: 4,),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Row(
-                                children: <Widget>[
-                                  Padding(
-                                    padding: const EdgeInsets.only(left:10.0),
-                                    child: CustomText(text: '4.7', color: GREY, size: 14,),
-                                  ),
-                                  SizedBox(height: 2,),
-                                  Icon(Icons.star, color: RED, size: 16,),
-                                  Icon(Icons.star, color: RED, size: 16,),
-                                  Icon(Icons.star, color: RED, size: 16,),
-                                  Icon(Icons.star, color: RED, size: 16,),
-                                  Icon(Icons.star, color: GREY, size: 16,),
-                                ],
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(right: 8.0),
-                                child: CustomText(text: '\$12.99', weight: FontWeight.bold,),
-                              )
-                            ],
-                          )
-                        ],
-                      ),
-                    ),
-                  );
-                }),
-          )
+          Featured()
         ])));
   }
 }
