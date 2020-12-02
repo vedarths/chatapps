@@ -59,7 +59,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                   title: TextField(
                     decoration: InputDecoration(
-                        hintText: "Find Food", border: InputBorder.none),
+                        hintText: "Find my Food", border: InputBorder.none),
                   ),
                   trailing: Icon(
                     Icons.filter_list,
@@ -77,6 +77,7 @@ class _HomePageState extends State<HomePage> {
               family: 'Monteserrat',
             ),
           ),
+
           Container(
             height: 240,
             child: ListView.builder(
@@ -110,10 +111,50 @@ class _HomePageState extends State<HomePage> {
                               ),
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20),
+                                    color: WHITE,
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: GREY[300],
+                                        offset: Offset(1, 1),
+                                        blurRadius: 4
+                                      )
+                                    ]
+
+                                  )),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(4.0),
                                 child: Icon(Icons.favorite_border, color: RED, size: 18,),
                               )
                             ],
                           ),
+                          SizedBox(height: 4,),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(
+                                children: <Widget>[
+                                  Padding(
+                                    padding: const EdgeInsets.only(left:10.0),
+                                    child: CustomText(text: '4.7', color: GREY, size: 14,),
+                                  ),
+                                  SizedBox(height: 2,),
+                                  Icon(Icons.star, color: RED, size: 16,),
+                                  Icon(Icons.star, color: RED, size: 16,),
+                                  Icon(Icons.star, color: RED, size: 16,),
+                                  Icon(Icons.star, color: RED, size: 16,),
+                                  Icon(Icons.star, color: GREY, size: 16,),
+                                ],
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(right: 8.0),
+                                child: CustomText(text: '\$12.99', weight: FontWeight.bold,),
+                              )
+                            ],
+                          )
                         ],
                       ),
                     ),
