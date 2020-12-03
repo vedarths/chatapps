@@ -24,7 +24,7 @@ class _HomePageState extends State<HomePage> {
             children: <Widget>[
               Padding(
                 padding: const EdgeInsets.all(18.0),
-                child: CustomText(text: "Watcha want?", size: 28),
+                child: CustomText(text: "What do you want today?", size: 28),
               ),
               Stack(
                 children: <Widget>[
@@ -224,11 +224,11 @@ class _HomePageState extends State<HomePage> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Image.asset(
-                  'images/home.png',
-                  width: 26,
-                  height: 26,
+                    'images/home.png',
+                    width: 26,
+                    height: 26,
+                  ),
                 ),
-              ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Image.asset(
@@ -248,7 +248,7 @@ class _HomePageState extends State<HomePage> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Image.asset(
-                  'images/home.png',
+                  'images/avatar.png',
                   width: 26,
                   height: 26,
                 ),
