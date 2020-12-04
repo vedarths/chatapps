@@ -1,4 +1,4 @@
-import 'package:chatapps/src/widgets/commons.dart';
+import 'package:chatapps/src/helpers/commons.dart';
 import 'package:flutter/material.dart';
 
 class CustomText extends StatelessWidget {

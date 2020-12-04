@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'commons.dart';
+import '../helpers/commons.dart';
 import 'package:chatapps/src/widgets/title.dart';
 import 'package:chatapps/src/models/category.dart';
 
