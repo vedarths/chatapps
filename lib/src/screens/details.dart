@@ -121,7 +121,36 @@ class _DetailsState extends State<Details> {
                 )
             ),
             CustomText(text: widget.product.name, size: 26, weight: FontWeight.bold,),
-            CustomText(text: "\$" + widget.product.price.toString(), size: 20, weight: FontWeight.w400,color: RED,)
+            CustomText(text: "\$" + widget.product.price.toString(), size: 20, weight: FontWeight.w400,color: RED,),
+            SizedBox(
+              height: 15,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: IconButton(icon: Icon(Icons.remove, size: 28,), onPressed: (){}),
+                ),
+                GestureDetector(
+                  onTap: () {},
+                  child: Container(
+                    decoration: BoxDecoration(
+                        color:RED
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(28, 8 ,28 ,8),
+                      child: CustomText(text: 'Add to Cart', color: WHITE, size: 24, weight: FontWeight.w600,),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: IconButton(icon: Icon(Icons.add, size: 28, color: RED,), onPressed: (){}),
+                ),
+              ],
+            ),
+
           ],
         ),
       ),
