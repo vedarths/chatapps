@@ -5,7 +5,7 @@ import 'package:chatapps/src/widgets/featured_products.dart';
 import 'package:chatapps/src/widgets/small_floating_button.dart';
 import 'package:chatapps/src/widgets/title.dart';
 import 'package:flutter/material.dart';
-import 'package:chatapps/src/widgets/commons.dart';
+import 'package:chatapps/src/helpers/commons.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -24,7 +24,7 @@ class _HomePageState extends State<HomePage> {
             children: <Widget>[
               Padding(
                 padding: const EdgeInsets.all(18.0),
-                child: CustomText(text: "What do you want today?", size: 28),
+                child: CustomText(text: "What do you want?", size: 28),
               ),
               Stack(
                 children: <Widget>[
