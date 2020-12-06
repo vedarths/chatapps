@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-import 'package:chatapps/src/helpers/scrwen_navigation.dart';
+import 'package:chatapps/src/helpers/screen_navigation.dart';
 import 'package:chatapps/src/widgets/bottom_navigaton.dart';
 import 'package:chatapps/src/widgets/categories.dart';
 import 'package:chatapps/src/widgets/featured_products.dart';
@@ -226,48 +226,9 @@ class _HomePageState extends State<HomePage> {
           child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    children: <Widget>[
-                      Image.asset(
-                        'images/home.png',
-                        width: 20,
-                        height: 20,
-                      ),
-                      SizedBox(height: 2,),
-                      CustomText(text: 'Home', size: 15)
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    children: <Widget> [
-                      Image.asset(
-                        'images/shopping-bag.png',
-                        width: 20,
-                        height: 20,
-                      ),
-                      SizedBox(height: 2,),
-                      CustomText(text: 'Cart', size: 15)
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    children: <Widget> [
-                      Image.asset(
-                        'images/avatar.png',
-                        width: 20,
-                        height: 20,
-                      ),
-                      SizedBox(height: 2,),
-                      CustomText(text: 'Account', size: 15,)
-                    ],
-                  ),
-                ),
+                BottomNavIcon(image: 'home.png',name: 'Home',function: () {changeScreen(context, HomePage());},),
+                BottomNavIcon(image: 'shopping-bag.png',name: 'Cart',function: () {changeScreen(context, ShoppingBag());},),
+                BottomNavIcon(image: 'avatar.png',name: 'Account',function: () {changeScreen(context, HomePage());},),
               ],
             ),
         ),
