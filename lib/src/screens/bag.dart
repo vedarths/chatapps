@@ -1,4 +1,5 @@
 import 'package:chatapps/src/helpers/commons.dart';
+import 'package:chatapps/src/models/products.dart';
 import 'package:chatapps/src/widgets/title.dart';
 import 'package:flutter/material.dart';
 
@@ -8,6 +9,10 @@ class ShoppingBag extends StatefulWidget {
 }
 
 class _ShoppingBagState extends State<ShoppingBag> {
+
+  Product product = Product(name: 'Cereals', image: '1.jpg', rating: 4.2, vendor: 'GoodFoods', price: 5.99, wishList: true);
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,6 +61,32 @@ class _ShoppingBagState extends State<ShoppingBag> {
         ],
       ),
       backgroundColor: WHITE,
+      body: ListView(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Container(
+              height: 120,
+              width: MediaQuery.of(context).size.width - 10,
+              decoration: BoxDecoration(
+                color: WHITE,
+                boxShadow: [
+                  BoxShadow(
+                    color: RED[50],
+                    offset: Offset(3,5),
+                    blurRadius: 15
+                  )
+                ]
+              ),
+              child: Row(
+                children: <Widget>[
+                  Text('')
+                ],
+              ),
+            ),
+          )
+        ],
+      )
     );
   }
 }
