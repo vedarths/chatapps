@@ -1,11 +1,15 @@
 import 'dart:ui';
 
+import 'package:chatapps/src/helpers/scrwen_navigation.dart';
+import 'package:chatapps/src/widgets/bottom_navigaton.dart';
 import 'package:chatapps/src/widgets/categories.dart';
 import 'package:chatapps/src/widgets/featured_products.dart';
 import 'package:chatapps/src/widgets/small_floating_button.dart';
 import 'package:chatapps/src/widgets/title.dart';
 import 'package:flutter/material.dart';
 import 'package:chatapps/src/helpers/commons.dart';
+
+import 'bag.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -214,47 +218,58 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ])),
-      bottomNavigationBar: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Container(
-          color: WHITE,
+      bottomNavigationBar: Container(
+        height: 75,
+        color: WHITE,
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Image.asset(
-                    'images/home.png',
-                    width: 26,
-                    height: 26,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    children: <Widget>[
+                      Image.asset(
+                        'images/home.png',
+                        width: 20,
+                        height: 20,
+                      ),
+                      SizedBox(height: 2,),
+                      CustomText(text: 'Home', size: 15)
+                    ],
                   ),
                 ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Image.asset(
-                  'images/target.png',
-                  width: 26,
-                  height: 26,
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    children: <Widget> [
+                      Image.asset(
+                        'images/shopping-bag.png',
+                        width: 20,
+                        height: 20,
+                      ),
+                      SizedBox(height: 2,),
+                      CustomText(text: 'Cart', size: 15)
+                    ],
+                  ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Image.asset(
-                  'images/shopping-bag.png',
-                  width: 26,
-                  height: 26,
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    children: <Widget> [
+                      Image.asset(
+                        'images/avatar.png',
+                        width: 20,
+                        height: 20,
+                      ),
+                      SizedBox(height: 2,),
+                      CustomText(text: 'Account', size: 15,)
+                    ],
+                  ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Image.asset(
-                  'images/avatar.png',
-                  width: 26,
-                  height: 26,
-                ),
-              ),
-            ],
-          ),
+              ],
+            ),
         ),
       ),
     );
