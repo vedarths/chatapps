@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "399191944741",
+    "project_id": "foodlady-8ce2a",
+    "storage_bucket": "foodlady-8ce2a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:399191944741:android:c613aed6b8afed1bc6d9cc",
+        "android_client_info": {
+          "package_name": "com.vedarth.chatapps"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "399191944741-gvq2r890140i0vtm8et7ajhl7b0up030.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDz_ws1oaIw9rj3jtcIVEZ-nIftMVO0fRw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "399191944741-gvq2r890140i0vtm8et7ajhl7b0up030.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
