@@ -27,10 +27,7 @@ class Authenticator with ChangeNotifier {
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
   TextEditingController name = TextEditingController();
-  TextEditingController address1 = TextEditingController();
-  TextEditingController address2 = TextEditingController();
-  TextEditingController town = TextEditingController();
-  TextEditingController postCode = TextEditingController();
+  TextEditingController phone = TextEditingController();
 
   Authenticator.initialize() : _auth = FirebaseAuth.instance {
     _auth.authStateChanges().listen(_onStateChanged);
@@ -59,10 +56,7 @@ class Authenticator with ChangeNotifier {
           .then((value) => (user) {
                 Map<String, dynamic> values = {
                   "name": name.text,
-                  "address1": address1.text,
-                  "address2": address2.text,
-                  "town": town.text,
-                  "postCode": postCode.text,
+                  "phone": phone.text,
                   "id": user.user.uid
                 };
                 _userService.create(values);
@@ -103,11 +97,7 @@ class Authenticator with ChangeNotifier {
     email.text = "";
     password.text = "";
     name.text = "";
-    address1.text = "";
-    address2.text = "";
-    town.text = "";
-    postCode.text = "";
-
+    phone.text = "";
   }
 
 }

@@ -140,26 +140,6 @@ class PasswordWidget extends StatelessWidget {
   }
 }
 
-class EmailWidget extends StatelessWidget {
-  const EmailWidget({
-    Key key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return TextField(
-      decoration: InputDecoration(
-          labelText: 'EMAIL',
-          labelStyle: TextStyle(
-              fontFamily: 'Monteserrat',
-              fontWeight: FontWeight.bold,
-              color: Colors.grey),
-          focusedBorder: UnderlineInputBorder(
-              borderSide: BorderSide(color: Colors.blue))),
-    );
-  }
-}
-
 class AddressLine1Widget extends StatelessWidget {
   const AddressLine1Widget(
       {

@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:chatapps/src/widgets/elements.dart';
 import 'package:flutter/material.dart';
 import 'package:chatapps/screens/login.dart';
 
@@ -33,13 +34,6 @@ class SignupPage extends StatefulWidget {
 }
 
 class _SignupPageState extends State<SignupPage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -60,10 +54,7 @@ class _SignupPageState extends State<SignupPage> {
                 children: <Widget>[
                   EmailWidget(),
                   PasswordWidget(),
-                  AddressLine1Widget(),
-                  AddressLine2Widget(),
-                  PostCodeWidget(),
-                  TownWidget(),
+                  PhoneWidget(),
                   SizedBox(height: 10.0),
                   SignupButtonWidget(),
                   SizedBox(height: 10.0),

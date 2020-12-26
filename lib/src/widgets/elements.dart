@@ -22,8 +22,8 @@ class EmailWidget extends StatelessWidget {
   }
 }
 
-class AddressLine1Widget extends StatelessWidget {
-  const AddressLine1Widget(
+class PhoneWidget extends StatelessWidget {
+  const PhoneWidget(
       {
         Key key,
       }
@@ -33,7 +33,7 @@ class AddressLine1Widget extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextField(
       decoration: InputDecoration(
-          labelText: 'ADDRESS LINE 1',
+          labelText: 'PHONE',
           labelStyle: TextStyle(
               fontFamily: 'Monteserrat',
               fontWeight: FontWeight.bold,
@@ -43,75 +43,6 @@ class AddressLine1Widget extends StatelessWidget {
     );
   }
 }
-
-class AddressLine2Widget extends StatelessWidget {
-  const AddressLine2Widget(
-      {
-        Key key,
-      }
-      ) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return TextField(
-      decoration: InputDecoration(
-          labelText: 'ADDRESS LINE 2',
-          labelStyle: TextStyle(
-              fontFamily: 'Monteserrat',
-              fontWeight: FontWeight.bold,
-              color: Colors.grey),
-          focusedBorder: UnderlineInputBorder(
-              borderSide: BorderSide(color: Colors.blue))),
-    );
-  }
-}
-
-class PostCodeWidget extends StatelessWidget {
-  const PostCodeWidget(
-      {
-        Key key,
-      }
-      ) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return TextField(
-      decoration: InputDecoration(
-          labelText: 'POST CODE',
-          labelStyle: TextStyle(
-              fontFamily: 'Monteserrat',
-              fontWeight: FontWeight.bold,
-              color: Colors.grey),
-          focusedBorder: UnderlineInputBorder(
-              borderSide: BorderSide(color: Colors.blue))),
-    );
-  }
-}
-
-class TownWidget extends StatelessWidget {
-  const TownWidget(
-      {
-        Key key,
-      }
-      ) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return TextField(
-      decoration: InputDecoration(
-          labelText: 'TOWN',
-          labelStyle: TextStyle(
-              fontFamily: 'Monteserrat',
-              fontWeight: FontWeight.bold,
-              color: Colors.grey),
-          focusedBorder: UnderlineInputBorder(
-              borderSide: BorderSide(color: Colors.blue))),
-    );
-  }
-}
-
-
-
 
 class SignupWidget extends StatelessWidget {
   const SignupWidget({
