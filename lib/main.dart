@@ -3,7 +3,7 @@ import 'dart:ui';
 import 'package:chatapps/src/screens/home.dart';
 import 'package:chatapps/src/screens/login.dart';
 import 'package:flutter/material.dart';
-import 'screens/signup.dart';
+import 'src/screens/signup.dart';
 
 void main() {
   runApp(Main());
