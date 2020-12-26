@@ -2,8 +2,6 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
-
-
 class SignupButtonWidget extends StatelessWidget {
   const SignupButtonWidget({
     Key key,
