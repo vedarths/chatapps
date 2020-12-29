@@ -18,9 +18,11 @@ class UserModel {
    bool get admin => _admin;
 
    UserModel.fromSnapshot(DocumentSnapshot snapshot) {
-      _name = snapshot.data()[NAME];
-      _email = snapshot.data()[EMAIL];
-      _phone = snapshot.data()[PHONE];
-      _admin = snapshot.data()[ADMIN];
+      if (snapshot.exists && snapshot.data() != null) {
+         _name = snapshot.data()[NAME];
+         _email = snapshot.data()[EMAIL];
+         _phone = snapshot.data()[PHONE];
+         _admin = snapshot.data()[ADMIN];
+      }
    }
 }

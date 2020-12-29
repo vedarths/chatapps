@@ -1,27 +1,14 @@
 import 'dart:ui';
 
+import 'package:chatapps/src/helpers/screen_navigation.dart';
+import 'package:chatapps/src/providers/authentication.dart';
 import 'package:chatapps/src/widgets/elements.dart';
+import 'package:chatapps/src/widgets/loading.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-void main() {
-  runApp(MyApp());
-}
+import 'home.dart';
 
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: SignupPage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
 
 class SignupPage extends StatefulWidget {
   SignupPage({Key key, this.title}) : super(key: key);
@@ -33,37 +20,120 @@ class SignupPage extends StatefulWidget {
 }
 
 class _SignupPageState extends State<SignupPage> {
-
+  final _key = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
+    final authProvider = Provider.of<Authenticator>(context);
     return Scaffold(
-      resizeToAvoidBottomPadding: false,
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Container(
-              child: Stack(children: <Widget>[
-                HelloWidget(),
-                FoodyWidget(),
-                DotWidget()
-              ])),
-          Container(
-              padding: EdgeInsets.only(top: 35.0, left: 20.0, right: 20.0),
-              child: Column(
-                children: <Widget>[
-                  EmailWidget(),
-                  PasswordWidget(),
-                  PhoneWidget(),
-                  SizedBox(height: 10.0),
-                  SignupButtonWidget(),
-                  SizedBox(height: 10.0),
-                  CancelButtonWidget()
-                ],
-              )),
-          SizedBox(height: 15.0),
-        ],
-      ),
-    );
+        key: _key,
+        resizeToAvoidBottomPadding: false,
+        body: authProvider.status == Status.AUTHENTICATING
+            ? Loading()
+            : SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Container(
+                        child: Stack(children: <Widget>[
+                      HelloWidget(),
+                      FoodyWidget(),
+                      DotWidget()
+                    ])),
+                    Container(
+                        padding:
+                            EdgeInsets.only(top: 35.0, left: 20.0, right: 20.0),
+                        child: Column(
+                          children: <Widget>[
+                            TextFormField(
+                              controller: authProvider.name,
+                              decoration: InputDecoration(
+                                  labelText: 'Name',
+                                  labelStyle: TextStyle(
+                                      fontFamily: 'Monteserrat',
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.grey),
+                                  focusedBorder: UnderlineInputBorder(
+                                      borderSide:
+                                          BorderSide(color: Colors.blue))),
+                            ),
+                            SizedBox(height: 10.0),
+                            TextFormField(
+                              controller: authProvider.email,
+                              decoration: InputDecoration(
+                                  labelText: 'EMAIL',
+                                  labelStyle: TextStyle(
+                                      fontFamily: 'Monteserrat',
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.grey),
+                                  focusedBorder: UnderlineInputBorder(
+                                      borderSide:
+                                      BorderSide(color: Colors.blue))),
+                            ),
+                            TextFormField(
+                              controller: authProvider.password,
+                              decoration: InputDecoration(
+                                  labelText: 'PASSWORD',
+                                  labelStyle: TextStyle(
+                                      fontFamily: 'Monteserrat',
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.grey),
+                                  focusedBorder: UnderlineInputBorder(
+                                      borderSide:
+                                          BorderSide(color: Colors.blue))),
+                              obscureText: true,
+                            ),
+                            SizedBox(height: 10.0),
+                            TextFormField(
+                              controller: authProvider.phone,
+                              decoration: InputDecoration(
+                                  labelText: 'PHONE',
+                                  labelStyle: TextStyle(
+                                      fontFamily: 'Monteserrat',
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.grey),
+                                  focusedBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(color: Colors.blue))),
+                              keyboardType: TextInputType.phone,
+                            ),
+                            SizedBox(height: 10.0),
+                            Container(
+                              height: 40.0,
+                              child: Material(
+                                borderRadius: BorderRadius.circular(20.0),
+                                shadowColor: Colors.blueAccent,
+                                color: Colors.blue,
+                                elevation: 7.0,
+                                child: GestureDetector(
+                                  onTap: () async {
+                                    if (!await authProvider.signUp()) {
+                                      _key.currentState.showSnackBar(
+                                          SnackBar(content: Text("Signup failed!"))
+                                      );
+                                      return;
+                                    }
+                                    authProvider.cleanControllers();
+                                    changeScreenReplacement(context, HomePage());
+                                  },
+                                  child: Center(
+                                    child: Text(
+                                      'SIGNUP',
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold,
+                                          fontFamily: 'Monteserrat'),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            SizedBox(height: 10.0),
+                            CancelButtonWidget()
+                          ],
+                        )),
+                    SizedBox(height: 15.0),
+                  ],
+                ),
+              ));
   }
 }
 
@@ -81,8 +151,8 @@ class PasswordWidget extends StatelessWidget {
               fontFamily: 'Monteserrat',
               fontWeight: FontWeight.bold,
               color: Colors.grey),
-          focusedBorder: UnderlineInputBorder(
-              borderSide: BorderSide(color: Colors.blue))),
+          focusedBorder:
+              UnderlineInputBorder(borderSide: BorderSide(color: Colors.blue))),
       obscureText: true,
     );
   }
@@ -134,13 +204,12 @@ class DotWidget extends StatelessWidget {
       child: Text(
         '.',
         style: TextStyle(
-            fontSize: 80.0,
-            fontWeight: FontWeight.bold,
-            color: Colors.blue),
+            fontSize: 80.0, fontWeight: FontWeight.bold, color: Colors.blue),
       ),
     );
   }
 }
+
 class RegisterWidget extends StatelessWidget {
   const RegisterWidget({
     Key key,
@@ -233,7 +302,6 @@ class CancelButtonWidget extends StatelessWidget {
   }
 }
 
-
 class GoogleLoginWidget extends StatelessWidget {
   const GoogleLoginWidget({
     Key key,
@@ -247,9 +315,7 @@ class GoogleLoginWidget extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
             border: Border.all(
-                color: Colors.red,
-                style: BorderStyle.solid,
-                width: 1.0),
+                color: Colors.red, style: BorderStyle.solid, width: 1.0),
             color: Colors.redAccent,
             borderRadius: BorderRadius.circular(20.0)),
         child: Row(
@@ -268,5 +334,3 @@ class GoogleLoginWidget extends StatelessWidget {
     );
   }
 }
-
-

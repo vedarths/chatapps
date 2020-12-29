@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 
 enum Status {
   NOT_INITIALIZED,
-  AUTHETICATING,
+  AUTHENTICATING,
   NOT_AUTHENTICATED,
   AUTHENTICATED,
 }
@@ -35,7 +35,7 @@ class Authenticator with ChangeNotifier {
 
   Future<bool> signIn() async {
     try {
-      _status = Status.AUTHETICATING;
+      _status = Status.AUTHENTICATING;
       notifyListeners();
       await _auth.signInWithEmailAndPassword(
           email: email.text, password: password.text);
@@ -48,12 +48,12 @@ class Authenticator with ChangeNotifier {
 
   Future<bool> signUp() async {
     try {
-      _status = Status.AUTHETICATING;
-      notifyListeners();
+      _status = Status.AUTHENTICATING;
       await _auth
           .createUserWithEmailAndPassword(
               email: email.text, password: password.text)
-          .then((value) => (user) {
+         .catchError(() => {print('error occurred')})
+         .then((value) => (user) {
                 Map<String, dynamic> values = {
                   "name": name.text,
                   "phone": phone.text,
@@ -61,6 +61,7 @@ class Authenticator with ChangeNotifier {
                 };
                 _userService.create(values);
               });
+      notifyListeners();
       return true;
     } catch (exception) {
       _onException(exception.toString());
@@ -73,8 +74,6 @@ class Authenticator with ChangeNotifier {
     _status = Status.NOT_AUTHENTICATED;
     notifyListeners();
   }
-
-
 
   Future<void> _onStateChanged(User user) async {
     if (user == null) {

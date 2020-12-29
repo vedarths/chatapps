@@ -2,25 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
-class EmailWidget extends StatelessWidget {
-  const EmailWidget({
-    Key key,
-  }) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return TextField(
-      decoration: InputDecoration(
-          labelText: 'EMAIL',
-          labelStyle: TextStyle(
-              fontFamily: 'Monteserrat',
-              fontWeight: FontWeight.bold,
-              color: Colors.grey),
-          focusedBorder: UnderlineInputBorder(
-              borderSide: BorderSide(color: Colors.blue))),
-    );
-  }
-}
 
 class PhoneWidget extends StatelessWidget {
   const PhoneWidget(
@@ -31,7 +13,7 @@ class PhoneWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
       decoration: InputDecoration(
           labelText: 'PHONE',
           labelStyle: TextStyle(

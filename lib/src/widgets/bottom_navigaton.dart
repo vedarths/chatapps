@@ -1,3 +1,4 @@
+import 'package:chatapps/src/helpers/commons.dart';
 import 'package:chatapps/src/widgets/title.dart';
 import 'package:flutter/material.dart';
 
@@ -9,7 +10,6 @@ class BottomNavIcon extends StatelessWidget {
 
   const BottomNavIcon({Key key, this.image, this.name, this.function}) : super(key: key);
 
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -20,11 +20,12 @@ class BottomNavIcon extends StatelessWidget {
           children: <Widget>[
             Image.asset(
               'images/$image',
+              color: BLACK,
               width: 20,
               height: 20,
             ),
             SizedBox(height: 2,),
-            CustomText(text: name, size: 15)
+            CustomText(text: name, size: 15, color: BLACK,),
           ],
         ),
       ),
