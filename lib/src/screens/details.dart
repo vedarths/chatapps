@@ -1,5 +1,5 @@
 import 'package:carousel_pro/carousel_pro.dart';
-import 'package:chatapps/src/models/products.dart';
+import 'package:chatapps/src/models/product.dart';
 import 'package:chatapps/src/helpers/commons.dart';
 import 'package:chatapps/src/widgets/small_floating_button.dart';
 import 'package:chatapps/src/widgets/title.dart';

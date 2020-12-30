@@ -1,5 +1,5 @@
 import 'package:chatapps/src/helpers/commons.dart';
-import 'package:chatapps/src/models/products.dart';
+import 'package:chatapps/src/models/product.dart';
 import 'package:chatapps/src/widgets/title.dart';
 import 'package:flutter/material.dart';
 

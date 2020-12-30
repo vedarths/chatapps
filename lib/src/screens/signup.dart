@@ -2,7 +2,6 @@ import 'dart:ui';
 
 import 'package:chatapps/src/helpers/screen_navigation.dart';
 import 'package:chatapps/src/providers/authentication.dart';
-import 'package:chatapps/src/widgets/elements.dart';
 import 'package:chatapps/src/widgets/loading.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -47,7 +46,7 @@ class _SignupPageState extends State<SignupPage> {
                             TextFormField(
                               controller: authProvider.name,
                               decoration: InputDecoration(
-                                  labelText: 'Name',
+                                  labelText: 'NAME',
                                   labelStyle: TextStyle(
                                       fontFamily: 'Monteserrat',
                                       fontWeight: FontWeight.bold,
