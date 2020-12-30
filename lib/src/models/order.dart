@@ -3,9 +3,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'orderItem.dart';
 
 enum OrderStatus {
-  CREATED,
   PENDING,
+  CREATED,
+  CONFIRMED,
   CANCELLED,
+  PAID,
   DELIVERED,
 }
 
@@ -31,7 +33,6 @@ class Order {
   String createdBy;
   String updated;
   String updatedBy;
-
 
   Order(this.orderReference, this.items, this.userId, this.status, this.created,
       this.createdBy, this.updated, this.updatedBy);

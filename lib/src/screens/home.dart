@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-import 'package:chatapps/src/helpers/screen_navigation.dart';
+import 'package:chatapps/src/helpers/navigation.dart';
 import 'package:chatapps/src/widgets/bottom_navigaton.dart';
 import 'package:chatapps/src/widgets/featured_products.dart';
 import 'package:chatapps/src/widgets/small_floating_button.dart';

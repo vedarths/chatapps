@@ -1,4 +1,4 @@
-import 'package:chatapps/src/helpers/screen_navigation.dart';
+import 'package:chatapps/src/helpers/navigation.dart';
 import 'package:chatapps/src/providers/authentication.dart';
 import 'package:chatapps/src/widgets/loading.dart';
 import 'package:flutter/material.dart';
