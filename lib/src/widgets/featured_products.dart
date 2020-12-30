@@ -6,8 +6,9 @@ import 'package:flutter/material.dart';
 import '../helpers/commons.dart';
 
 List<Product> productsList = [
-  Product(name: 'Cereals', image: '1.jpg', rating: 4.2, vendor: 'GoodFoods', price: 5.99, wishList: true),
-  Product(name: 'Tacos', image: '5.jpg', rating: 3.9, vendor: 'GoodFoods', price: 10.99, wishList: false),
+  //TODO  - load from DB
+  Product(name: 'Cereals', image: '1.jpg', rating: 4.2, active: true, price: 5.99, categoryId: "1234"),
+  Product(name: 'Tacos', image: '5.jpg', rating: 3.9, active: true, price: 10.99, categoryId: "5678")
 ];
 class Featured extends StatelessWidget {
 
@@ -65,7 +66,7 @@ class Featured extends StatelessWidget {
                           ),
                           Padding(
                             padding: const EdgeInsets.all(4.0),
-                            child: productsList[index].wishList ? Icon(Icons.favorite, color: RED, size: 18,) : Icon(Icons.favorite_outline, color: RED, size: 18,),
+                            child: productsList[index].active ? Icon(Icons.favorite, color: RED, size: 18,) : Icon(Icons.favorite_outline, color: RED, size: 18,), //TODO - Display as faded if inactive
                           )
                         ],
                       ),

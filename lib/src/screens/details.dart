@@ -18,7 +18,7 @@ class _DetailsState extends State<Details> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: WHITE,
+      backgroundColor: BLACK,
       body: SafeArea(
         child: Column(
           children: <Widget>[

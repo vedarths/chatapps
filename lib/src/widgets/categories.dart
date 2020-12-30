@@ -4,6 +4,7 @@ import 'package:chatapps/src/widgets/title.dart';
 import 'package:chatapps/src/models/category.dart';
 
 List<Category> categoriesList = [
+  //TODO  - load from DB
   Category(name: 'Salad', image: 'salad.png'),
   Category(name: 'Steak', image: 'steak.png'),
   Category(name: 'Fast food', image: 'sandwich.png'),
