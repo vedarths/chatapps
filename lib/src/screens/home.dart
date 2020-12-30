@@ -24,7 +24,6 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     final userProvider = Provider.of<UserProvider>(context);
     final categoryProvider = Provider.of<CategoryProvider>(context);
-    final productProvider = Provider.of<ProductProvider>(context);
     return Scaffold(
       backgroundColor: Colors.black,
       body: SafeArea(

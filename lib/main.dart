@@ -1,4 +1,5 @@
 import 'package:chatapps/src/providers/category.dart';
+import 'package:chatapps/src/providers/product.dart';
 import 'package:chatapps/src/providers/user.dart';
 import 'package:chatapps/src/screens/home.dart';
 import 'package:chatapps/src/screens/login.dart';
@@ -14,7 +15,8 @@ Future<void> main() async {
   runApp(MultiProvider(
       providers: [
         ChangeNotifierProvider.value(value: UserProvider.initialize()),
-        ChangeNotifierProvider.value(value: CategoryProvider.initialize())
+        ChangeNotifierProvider.value(value: CategoryProvider.initialize()),
+        ChangeNotifierProvider.value(value: ProductProvider.initialize())
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
