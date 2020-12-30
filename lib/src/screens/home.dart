@@ -1,11 +1,15 @@
 import 'dart:ui';
 
+import 'package:chatapps/src/helpers/screen_navigation.dart';
+import 'package:chatapps/src/widgets/bottom_navigaton.dart';
 import 'package:chatapps/src/widgets/categories.dart';
 import 'package:chatapps/src/widgets/featured_products.dart';
 import 'package:chatapps/src/widgets/small_floating_button.dart';
 import 'package:chatapps/src/widgets/title.dart';
 import 'package:flutter/material.dart';
 import 'package:chatapps/src/helpers/commons.dart';
+
+import 'bag.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -16,7 +20,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: WHITE,
+      backgroundColor: Colors.black,
       body: SafeArea(
           child: ListView(children: <Widget>[
         Row(
@@ -24,11 +28,12 @@ class _HomePageState extends State<HomePage> {
             children: <Widget>[
               Padding(
                 padding: const EdgeInsets.all(18.0),
-                child: CustomText(text: "What do you want?", size: 28),
+                child: CustomText(text: "Catering Menu", size: 28, color: WHITE,),
               ),
               Stack(
                 children: <Widget>[
                   IconButton(
+                      color: WHITE,
                       icon: Icon(Icons.notifications_none), onPressed: () {}),
                   Positioned(
                       top: 12,
@@ -59,7 +64,7 @@ class _HomePageState extends State<HomePage> {
                 ),
                 title: TextField(
                   decoration: InputDecoration(
-                      hintText: "Find my Food", border: InputBorder.none),
+                      hintText: "Find my Order", border: InputBorder.none),
                 ),
                 trailing: Icon(
                   Icons.filter_list,
@@ -67,13 +72,13 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             )),
-        Categories(),
+        // Categories(),
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: CustomText(
             text: "Featured",
             size: 20,
-            color: GREY,
+            color: WHITE,
             family: 'Monteserrat',
           ),
         ),
@@ -167,7 +172,7 @@ class _HomePageState extends State<HomePage> {
                       child: RichText(
                         text: TextSpan(children: [
                           TextSpan(
-                              text: 'Pancakes \n',
+                              text: 'Paneer Tikka \n',
                               style: TextStyle(
                                   fontSize: 20,
                                   fontWeight: FontWeight.bold,
@@ -196,7 +201,7 @@ class _HomePageState extends State<HomePage> {
                         text: TextSpan(
                           children: [
                             TextSpan(
-                                text: '\$12.99 \n',
+                                text: '\£12.99 \n',
                                 style: TextStyle(
                                     fontSize: 22,
                                     fontWeight: FontWeight.normal,
@@ -214,46 +219,21 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ])),
-      bottomNavigationBar: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Container(
-          color: WHITE,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Image.asset(
-                    'images/home.png',
-                    width: 26,
-                    height: 26,
-                  ),
-                ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Image.asset(
-                  'images/target.png',
-                  width: 26,
-                  height: 26,
-                ),
+      bottomNavigationBar: Container(
+        height: 75,
+        color: WHITE,
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Container(
+            color: WHITE,
+            child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  BottomNavIcon(image: 'home.png',name: 'Home',function: () {changeScreen(context, HomePage());},),
+                  BottomNavIcon(image: 'shopping-bag.png',name: 'Cart',function: () {changeScreen(context, ShoppingBag());},),
+                  BottomNavIcon(image: 'avatar.png',name: 'Account',function: () {changeScreen(context, HomePage());},),
+                ],
               ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Image.asset(
-                  'images/shopping-bag.png',
-                  width: 26,
-                  height: 26,
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Image.asset(
-                  'images/avatar.png',
-                  width: 26,
-                  height: 26,
-                ),
-              ),
-            ],
           ),
         ),
       ),

@@ -1,7 +1,12 @@
+import 'package:chatapps/src/helpers/screen_navigation.dart';
+import 'package:chatapps/src/providers/authentication.dart';
+import 'package:chatapps/src/widgets/loading.dart';
 import 'package:flutter/material.dart';
-import 'package:chatapps/src/widgets/elements.dart';
 import 'package:chatapps/src/widgets/header.dart';
 import 'package:chatapps/src/widgets/buttons.dart';
+import 'package:provider/provider.dart';
+
+import 'home.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -9,74 +14,96 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  final _key = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
+    final authProvider = Provider.of<Authenticator>(context);
+
     return Scaffold(
+      key: _key,
       resizeToAvoidBottomPadding: false,
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Container(
-              child: Stack(children: <Widget>[
-                HelloWidget(),
-                FoodyWidget(),
-                DotWidget()
-              ])),
-          Container(
-              padding: EdgeInsets.only(top: 35.0, left: 20.0, right: 20.0),
+      body: authProvider.status == Status.AUTHENTICATING
+          ? Loading()
+          : SingleChildScrollView(
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  EmailWidget(),
-                  SizedBox(height: 20.0),
-                  PasswordWidget(),
-                  SizedBox(height: 20.0),
-                  ForgotPasswordWidget(),
-                  SizedBox(height: 40.0),
-                  LoginButtonWidget(),
-                  SizedBox(height: 20.0),
-                  GoogleLoginWidget()
+                  Container(
+                      child: Stack(children: <Widget>[
+                    HelloWidget(),
+                    FoodyWidget(),
+                    DotWidget()
+                  ])),
+                  Container(
+                      padding:
+                          EdgeInsets.only(top: 35.0, left: 20.0, right: 20.0),
+                      child: Column(
+                        children: <Widget>[
+                          TextFormField(
+                            controller: authProvider.email,
+                            decoration: InputDecoration(
+                                labelText: 'EMAIL',
+                                labelStyle: TextStyle(
+                                    fontFamily: 'Monteserrat',
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.grey),
+                                focusedBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(color: Colors.blue))),
+                          ),
+                          SizedBox(height: 20.0),
+                          TextFormField(
+                            controller: authProvider.password,
+                            decoration: InputDecoration(
+                                labelText: 'PASSWORD',
+                                labelStyle: TextStyle(
+                                    fontFamily: 'Monteserrat',
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.grey),
+                                focusedBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(color: Colors.blue))),
+                            obscureText: true,
+                          ),
+                          SizedBox(height: 20.0),
+                          ForgotPasswordWidget(),
+                          SizedBox(height: 40.0),
+                          Material(
+                            borderRadius: BorderRadius.circular(20.0),
+                            shadowColor: Colors.blueAccent,
+                            color: Colors.blue,
+                            elevation: 7.0,
+                            child: GestureDetector(
+                              behavior: HitTestBehavior.translucent,
+                              onTap: () async {
+                                if (!await authProvider.signIn()) {
+                                    _key.currentState.showSnackBar(
+                                      SnackBar(content: Text("Login failed!"))
+                                    );
+                                    return;
+                                }
+                                authProvider.cleanControllers();
+                                changeScreenReplacement(context, HomePage());
+                              },
+                              child: Center(
+                                child: Text(
+                                  'LOGIN',
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      fontFamily: 'Monteserrat'),
+                                ),
+                              ),
+                            ),
+                          ),
+                          SizedBox(height: 40.0),
+                          GoogleLoginWidget()
+                        ],
+                      )),
+                  SizedBox(height: 15.0),
+                  RegisterWidget()
                 ],
-              )),
-          SizedBox(height: 15.0),
-          RegisterWidget()
-        ],
-      ),
-    );
-  }
-}
-
-class LoginButtonWidget extends StatelessWidget {
-
-  const LoginButtonWidget({
-    Key key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 40.0,
-      child: Material(
-        borderRadius: BorderRadius.circular(20.0),
-        shadowColor: Colors.blueAccent,
-        color: Colors.blue,
-        elevation: 7.0,
-        child: GestureDetector(
-          behavior: HitTestBehavior.translucent,
-          onTap: () {
-            Navigator.of(context).pushNamed('/home');
-          },
-          child: Center(
-            child: Text(
-              'LOGIN',
-              style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: 'Monteserrat'),
+              ),
             ),
-          ),
-        ),
-      ),
     );
   }
 }
@@ -124,9 +151,7 @@ class GoogleLoginWidget extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
             border: Border.all(
-                color: Colors.red,
-                style: BorderStyle.solid,
-                width: 1.0),
+                color: Colors.red, style: BorderStyle.solid, width: 1.0),
             color: Colors.redAccent,
             borderRadius: BorderRadius.circular(20.0)),
         child: Row(

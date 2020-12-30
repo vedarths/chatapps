@@ -1,4 +1,4 @@
-import 'package:chatapps/src/helpers/scrwen_navigation.dart';
+import 'package:chatapps/src/helpers/screen_navigation.dart';
 import 'package:chatapps/src/models/products.dart';
 import 'package:chatapps/src/screens/details.dart';
 import 'package:chatapps/src/widgets/title.dart';
