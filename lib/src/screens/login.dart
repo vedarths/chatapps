@@ -1,5 +1,5 @@
 import 'package:chatapps/src/helpers/navigation.dart';
-import 'package:chatapps/src/providers/authentication.dart';
+import 'package:chatapps/src/providers/user.dart';
 import 'package:chatapps/src/widgets/loading.dart';
 import 'package:flutter/material.dart';
 import 'package:chatapps/src/widgets/header.dart';
@@ -18,7 +18,7 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    final authProvider = Provider.of<Authenticator>(context);
+    final authProvider = Provider.of<UserProvider>(context);
 
     return Scaffold(
       key: _key,

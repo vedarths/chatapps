@@ -1,4 +1,5 @@
-import 'package:chatapps/src/providers/authentication.dart';
+import 'package:chatapps/src/providers/category.dart';
+import 'package:chatapps/src/providers/user.dart';
 import 'package:chatapps/src/screens/home.dart';
 import 'package:chatapps/src/screens/login.dart';
 import 'package:chatapps/src/widgets/loading.dart';
@@ -12,7 +13,8 @@ Future<void> main() async {
   await Firebase.initializeApp();
   runApp(MultiProvider(
       providers: [
-        ChangeNotifierProvider.value(value: Authenticator.initialize())
+        ChangeNotifierProvider.value(value: UserProvider.initialize()),
+        ChangeNotifierProvider.value(value: CategoryProvider.initialize())
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -33,7 +35,7 @@ Future<void> main() async {
 class ScreenController extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final auth = Provider.of<Authenticator>(context);
+    final auth = Provider.of<UserProvider>(context);
     switch (auth.status) {
       case Status.NOT_INITIALIZED:
         return LoginPage();

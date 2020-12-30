@@ -1,12 +1,16 @@
 import 'dart:ui';
 
 import 'package:chatapps/src/helpers/navigation.dart';
+import 'package:chatapps/src/providers/category.dart';
+import 'package:chatapps/src/providers/product.dart';
+import 'package:chatapps/src/providers/user.dart';
 import 'package:chatapps/src/widgets/bottom_navigaton.dart';
 import 'package:chatapps/src/widgets/featured_products.dart';
 import 'package:chatapps/src/widgets/small_floating_button.dart';
 import 'package:chatapps/src/widgets/title.dart';
 import 'package:flutter/material.dart';
 import 'package:chatapps/src/helpers/commons.dart';
+import 'package:provider/provider.dart';
 
 import 'bag.dart';
 
@@ -18,6 +22,9 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
+    final userProvider = Provider.of<UserProvider>(context);
+    final categoryProvider = Provider.of<CategoryProvider>(context);
+    final productProvider = Provider.of<ProductProvider>(context);
     return Scaffold(
       backgroundColor: Colors.black,
       body: SafeArea(

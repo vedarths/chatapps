@@ -10,7 +10,7 @@ enum Status {
   AUTHENTICATED,
 }
 
-class Authenticator with ChangeNotifier {
+class UserProvider with ChangeNotifier {
   FirebaseAuth _auth;
   User _user;
   Status _status = Status.NOT_INITIALIZED;
@@ -29,7 +29,7 @@ class Authenticator with ChangeNotifier {
   TextEditingController name = TextEditingController();
   TextEditingController phone = TextEditingController();
 
-  Authenticator.initialize() : _auth = FirebaseAuth.instance {
+  UserProvider.initialize() : _auth = FirebaseAuth.instance {
     _auth.authStateChanges().listen(_onStateChanged);
   }
 
