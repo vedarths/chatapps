@@ -10,7 +10,7 @@ class ShoppingBag extends StatefulWidget {
 
 class _ShoppingBagState extends State<ShoppingBag> {
   //TODO - load product from DB
-  Product product = Product(name: 'Cereals', image: '1.jpg', rating: 4.2, active: true, price: 5.99, categoryId: "1234");
+  Product product = Product(name: 'Cereals', image: '1.jpg', rating: 4.2, active: true, price: 5.99, category: "1234");
 
   @override
   Widget build(BuildContext context) {

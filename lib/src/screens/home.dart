@@ -34,7 +34,7 @@ class _HomePageState extends State<HomePage> {
             children: <Widget>[
               Padding(
                 padding: const EdgeInsets.all(18.0),
-                child: CustomText(text: "Hello ${userProvider.userModel.email}", size: 28, color: WHITE,),
+                child: CustomText(text: "Hello Foody!", size: 28, color: WHITE,),
               ),
               Stack(
                 children: <Widget>[
@@ -42,7 +42,7 @@ class _HomePageState extends State<HomePage> {
                       color: WHITE,
                       icon: Icon(Icons.notifications_none), onPressed: () {}),
                   Positioned(
-                      top: 12,
+                      top: 10,
                       right: 12,
                       child: Container(
                         height: 10,
@@ -50,7 +50,7 @@ class _HomePageState extends State<HomePage> {
                         decoration: BoxDecoration(
                             color: RED,
                             borderRadius: BorderRadius.circular(20)),
-                      ))
+                      )),
                 ],
               ),
             ]),
@@ -83,7 +83,7 @@ class _HomePageState extends State<HomePage> {
           child: CustomText(
             text: "This Week's Menu",
             size: 20,
-            color: GREY,
+            color: WHITE,
             family: 'Monteserrat',
           ),
         ),
