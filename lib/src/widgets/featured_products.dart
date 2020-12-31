@@ -27,9 +27,9 @@ class Featured extends StatelessWidget {
                 child: Container(
                   height: 240,
                   width: 200,
-                  decoration: BoxDecoration(color: WHITE, boxShadow: [
+                  decoration: BoxDecoration(color: BLACK, boxShadow: [
                     BoxShadow(
-                        color: RED[50],
+                        color: BLACK,
                         offset: Offset(15, 5),
                         blurRadius: 30)
                   ]),
@@ -44,7 +44,7 @@ class Featured extends StatelessWidget {
                         children: <Widget>[
                           Padding(
                             padding: const EdgeInsets.all(8.0),
-                            child: CustomText(text: '${productProvider.products[index].name}',),
+                            child: CustomText(text: '${productProvider.products[index].name}', color: WHITE,),
                           ),
                           Padding(
                             padding: const EdgeInsets.all(8.0),

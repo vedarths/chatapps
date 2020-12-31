@@ -1,7 +1,9 @@
 import 'dart:ui';
 
+import 'package:chatapps/src/helpers/commons.dart';
 import 'package:chatapps/src/helpers/navigation.dart';
 import 'package:chatapps/src/providers/user.dart';
+import 'package:chatapps/src/widgets/header.dart';
 import 'package:chatapps/src/widgets/loading.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -24,6 +26,7 @@ class _SignupPageState extends State<SignupPage> {
   Widget build(BuildContext context) {
     final authProvider = Provider.of<UserProvider>(context);
     return Scaffold(
+        backgroundColor: BLACK,
         key: _key,
         resizeToAvoidBottomPadding: false,
         body: authProvider.status == Status.AUTHENTICATING
@@ -44,6 +47,8 @@ class _SignupPageState extends State<SignupPage> {
                         child: Column(
                           children: <Widget>[
                             TextFormField(
+                              style: TextStyle(color: WHITE),
+                              cursorColor: WHITE,
                               controller: authProvider.name,
                               decoration: InputDecoration(
                                   labelText: 'NAME',
@@ -57,6 +62,8 @@ class _SignupPageState extends State<SignupPage> {
                             ),
                             SizedBox(height: 10.0),
                             TextFormField(
+                              style: TextStyle(color: WHITE),
+                              cursorColor: WHITE,
                               controller: authProvider.email,
                               decoration: InputDecoration(
                                   labelText: 'EMAIL',
@@ -69,6 +76,8 @@ class _SignupPageState extends State<SignupPage> {
                                       BorderSide(color: Colors.blue))),
                             ),
                             TextFormField(
+                              style: TextStyle(color: WHITE),
+                              cursorColor: WHITE,
                               controller: authProvider.password,
                               decoration: InputDecoration(
                                   labelText: 'PASSWORD',
@@ -83,6 +92,8 @@ class _SignupPageState extends State<SignupPage> {
                             ),
                             SizedBox(height: 10.0),
                             TextFormField(
+                              style: TextStyle(color: WHITE),
+                              cursorColor: WHITE,
                               controller: authProvider.phone,
                               decoration: InputDecoration(
                                   labelText: 'PHONE',
@@ -153,58 +164,6 @@ class PasswordWidget extends StatelessWidget {
           focusedBorder:
               UnderlineInputBorder(borderSide: BorderSide(color: Colors.blue))),
       obscureText: true,
-    );
-  }
-}
-
-class HelloWidget extends StatelessWidget {
-  const HelloWidget({
-    Key key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.fromLTRB(15.0, 110.0, 0.0, 0.0),
-      child: Text(
-        'Hello',
-        style: TextStyle(fontSize: 80.0, fontWeight: FontWeight.bold),
-      ),
-    );
-  }
-}
-
-class FoodyWidget extends StatelessWidget {
-  const FoodyWidget({
-    Key key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.fromLTRB(15.0, 185.0, 0.0, 0.0),
-      child: Text(
-        'Foody',
-        style: TextStyle(fontSize: 70.0, fontWeight: FontWeight.bold),
-      ),
-    );
-  }
-}
-
-class DotWidget extends StatelessWidget {
-  const DotWidget({
-    Key key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.fromLTRB(167.0, 175.0, 0.0, 0.0),
-      child: Text(
-        '.',
-        style: TextStyle(
-            fontSize: 80.0, fontWeight: FontWeight.bold, color: Colors.blue),
-      ),
     );
   }
 }
@@ -282,7 +241,7 @@ class CancelButtonWidget extends StatelessWidget {
       child: Material(
         borderRadius: BorderRadius.circular(20.0),
         shadowColor: Colors.blueAccent,
-        color: Colors.blue,
+        color: Colors.white,
         elevation: 7.0,
         child: GestureDetector(
           onTap: () {},
@@ -290,7 +249,7 @@ class CancelButtonWidget extends StatelessWidget {
             child: Text(
               'CANCEL',
               style: TextStyle(
-                  color: Colors.white,
+                  color: Colors.black,
                   fontWeight: FontWeight.bold,
                   fontFamily: 'Monteserrat'),
             ),
