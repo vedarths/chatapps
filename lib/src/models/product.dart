@@ -34,4 +34,6 @@ class Product {
       category = snapshot.data()[CATEGORY];
     }
   }
+
+
 }

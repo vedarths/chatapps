@@ -1,16 +1,15 @@
 import 'dart:ui';
 
+import 'package:chatapps/src/helpers/commons.dart';
 import 'package:chatapps/src/helpers/navigation.dart';
 import 'package:chatapps/src/providers/category.dart';
 import 'package:chatapps/src/providers/product.dart';
 import 'package:chatapps/src/providers/user.dart';
-import 'package:chatapps/src/widgets/bottom_navigaton.dart';
-import 'package:chatapps/src/widgets/featured_products.dart';
-import 'package:chatapps/src/widgets/popular_products.dart';
-import 'package:chatapps/src/widgets/small_floating_button.dart';
+import 'package:chatapps/src/screens/product_search.dart';
+import 'package:chatapps/src/widgets/bottom_navigation.dart';
+import 'package:chatapps/src/widgets/products.dart';
 import 'package:chatapps/src/widgets/title.dart';
 import 'package:flutter/material.dart';
-import 'package:chatapps/src/helpers/commons.dart';
 import 'package:provider/provider.dart';
 
 import 'bag.dart';
@@ -23,8 +22,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    final userProvider = Provider.of<UserProvider>(context);
-    final categoryProvider = Provider.of<CategoryProvider>(context);
+    final productProvider = Provider.of<ProductProvider>(context);
     return Scaffold(
       backgroundColor: Colors.black,
       body: SafeArea(
@@ -69,6 +67,11 @@ class _HomePageState extends State<HomePage> {
                   color: BLUE,
                 ),
                 title: TextField(
+                  textInputAction: TextInputAction.search,
+                  onSubmitted: (pattern) async {
+                    await productProvider.search(name: pattern);
+                    changeScreen(context, ProductSearch());
+                  },
                   decoration: InputDecoration(
                       hintText: "Find a Dish", border: InputBorder.none),
                 ),
@@ -87,7 +90,7 @@ class _HomePageState extends State<HomePage> {
             family: 'Monteserrat',
           ),
         ),
-        Popular(),
+        ProductWidget(products: productProvider.products),
       ])),
       bottomNavigationBar: Container(
         height: 75,
