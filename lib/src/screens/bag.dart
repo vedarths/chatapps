@@ -1,5 +1,5 @@
 import 'package:chatapps/src/helpers/commons.dart';
-import 'package:chatapps/src/models/products.dart';
+import 'package:chatapps/src/models/product.dart';
 import 'package:chatapps/src/widgets/title.dart';
 import 'package:flutter/material.dart';
 
@@ -9,13 +9,8 @@ class ShoppingBag extends StatefulWidget {
 }
 
 class _ShoppingBagState extends State<ShoppingBag> {
-  Product product = Product(
-      name: 'Cereals',
-      image: '1.jpg',
-      rating: 4.2,
-      vendor: 'GoodFoods',
-      price: 5.99,
-      wishList: true);
+  //TODO - load product from DB
+  Product product = Product(name: 'Cereals', image: '1.jpg', rating: 4.2, active: true, price: 5.99, category: "1234");
 
   @override
   Widget build(BuildContext context) {

@@ -1,5 +1,6 @@
-import 'package:chatapps/src/helpers/screen_navigation.dart';
-import 'package:chatapps/src/providers/authentication.dart';
+import 'package:chatapps/src/helpers/commons.dart';
+import 'package:chatapps/src/helpers/navigation.dart';
+import 'package:chatapps/src/providers/user.dart';
 import 'package:chatapps/src/widgets/loading.dart';
 import 'package:flutter/material.dart';
 import 'package:chatapps/src/widgets/header.dart';
@@ -18,10 +19,11 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    final authProvider = Provider.of<Authenticator>(context);
+    final authProvider = Provider.of<UserProvider>(context);
 
     return Scaffold(
       key: _key,
+      backgroundColor: BLACK,
       resizeToAvoidBottomPadding: false,
       body: authProvider.status == Status.AUTHENTICATING
           ? Loading()
@@ -41,25 +43,29 @@ class _LoginPageState extends State<LoginPage> {
                       child: Column(
                         children: <Widget>[
                           TextFormField(
+                            cursorColor: WHITE,
+                            style: TextStyle(color: WHITE),
                             controller: authProvider.email,
                             decoration: InputDecoration(
                                 labelText: 'EMAIL',
                                 labelStyle: TextStyle(
                                     fontFamily: 'Monteserrat',
                                     fontWeight: FontWeight.bold,
-                                    color: Colors.grey),
+                                    color: Colors.blue),
                                 focusedBorder: UnderlineInputBorder(
                                     borderSide: BorderSide(color: Colors.blue))),
                           ),
                           SizedBox(height: 20.0),
                           TextFormField(
+                            cursorColor: WHITE,
+                            style: TextStyle(color: WHITE),
                             controller: authProvider.password,
                             decoration: InputDecoration(
                                 labelText: 'PASSWORD',
                                 labelStyle: TextStyle(
                                     fontFamily: 'Monteserrat',
                                     fontWeight: FontWeight.bold,
-                                    color: Colors.grey),
+                                    color: Colors.blue),
                                 focusedBorder: UnderlineInputBorder(
                                     borderSide: BorderSide(color: Colors.blue))),
                             obscureText: true,
@@ -67,30 +73,34 @@ class _LoginPageState extends State<LoginPage> {
                           SizedBox(height: 20.0),
                           ForgotPasswordWidget(),
                           SizedBox(height: 40.0),
-                          Material(
-                            borderRadius: BorderRadius.circular(20.0),
-                            shadowColor: Colors.blueAccent,
-                            color: Colors.blue,
-                            elevation: 7.0,
-                            child: GestureDetector(
-                              behavior: HitTestBehavior.translucent,
-                              onTap: () async {
-                                if (!await authProvider.signIn()) {
-                                    _key.currentState.showSnackBar(
-                                      SnackBar(content: Text("Login failed!"))
-                                    );
-                                    return;
-                                }
-                                authProvider.cleanControllers();
-                                changeScreenReplacement(context, HomePage());
-                              },
-                              child: Center(
-                                child: Text(
-                                  'LOGIN',
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                      fontFamily: 'Monteserrat'),
+                          Padding(
+                            padding: const EdgeInsets.all(16.0),
+                            child: Material(
+                              borderRadius: BorderRadius.circular(20.0),
+                              shadowColor: Colors.blueAccent,
+                              color: Colors.blue,
+                              elevation: 7.0,
+                              child: GestureDetector(
+                                behavior: HitTestBehavior.translucent,
+                                onTap: () async {
+                                  if (!await authProvider.signIn()) {
+                                      _key.currentState.showSnackBar(
+                                        SnackBar(content: Text("Login failed!"))
+                                      );
+                                      return;
+                                  }
+                                  authProvider.cleanControllers();
+                                  changeScreenReplacement(context, HomePage());
+                                },
+                                child: Center(
+                                  heightFactor: 3,
+                                  child: Text(
+                                    'LOGIN',
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold,
+                                        fontFamily: 'Monteserrat'),
+                                  ),
                                 ),
                               ),
                             ),
@@ -115,14 +125,15 @@ class RegisterWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return
+      Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         Text(
           'New to Foody ?',
-          style: TextStyle(fontFamily: 'Monteserrat'),
+          style: TextStyle(color: WHITE, fontFamily: 'Monteserrat'),
         ),
-        SizedBox(width: 5.0),
+        SizedBox(width: 15.0),
         InkWell(
             onTap: () {
               Navigator.of(context).pushNamed('/signup');
@@ -163,7 +174,8 @@ class GoogleLoginWidget extends StatelessWidget {
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
-                        fontFamily: 'Monteserrat')))
+                        fontFamily: 'Monteserrat'))),
+            SizedBox(height: 20.0)
           ],
         ),
       ),

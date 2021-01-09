@@ -6,23 +6,17 @@ class UserModel {
    static const PHONE = "phone";
    static const ADMIN = "admin";
 
-   String  _name;
-   String  _email;
-   String  _phone;
-   bool _admin;
-
-   // getters
-   String get name => _name;
-   String get email => _email;
-   String get phone => _phone;
-   bool get admin => _admin;
+   String name;
+   String email;
+   String phone;
+   bool admin;
 
    UserModel.fromSnapshot(DocumentSnapshot snapshot) {
       if (snapshot.exists && snapshot.data() != null) {
-         _name = snapshot.data()[NAME];
-         _email = snapshot.data()[EMAIL];
-         _phone = snapshot.data()[PHONE];
-         _admin = snapshot.data()[ADMIN];
+         name = snapshot.data()[NAME];
+         email = snapshot.data()[EMAIL];
+         phone = snapshot.data()[PHONE];
+         admin = snapshot.data()[ADMIN];
       }
    }
 }

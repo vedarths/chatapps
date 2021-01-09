@@ -3,13 +3,14 @@ import '../helpers/commons.dart';
 import 'package:chatapps/src/widgets/title.dart';
 import 'package:chatapps/src/models/category.dart';
 
-List<FoodCategory> categoriesList = [
-  FoodCategory(name: 'Salad', image: 'salad.png'),
-  FoodCategory(name: 'Steak', image: 'steak.png'),
-  FoodCategory(name: 'Fast food', image: 'sandwich.png'),
-  FoodCategory(name: 'Desserts', image: 'ice-cream.png'),
-  FoodCategory(name: 'Beer', image: 'pint.png'),
-  FoodCategory(name: 'Sea food', image: 'fish.png'),
+List<Category> categoriesList = [
+  //TODO  - load from DB
+  Category(name: 'Salad', image: 'salad.png'),
+  Category(name: 'Steak', image: 'steak.png'),
+  Category(name: 'Fast food', image: 'sandwich.png'),
+  Category(name: 'Desserts', image: 'ice-cream.png'),
+  Category(name: 'Beer', image: 'pint.png'),
+  Category(name: 'Sea food', image: 'fish.png'),
 
 ];
 
